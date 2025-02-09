@@ -5,6 +5,7 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.http.URLProtocol
 import io.ktor.http.encodedPath
+import io.ktor.http.path
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -23,7 +24,7 @@ class Repository(
             url {
                 protocol = URLProtocol.HTTPS
                 host = "api.themoviedb.org"
-                encodedPath = "/3/movie/$type"
+                path("/3/movie/$type")
                 parameters.append("api_key", "faa84039c1876a6d0f9856208f4b03ef")
             }
         }.body<Movies>()
@@ -42,7 +43,7 @@ class Repository(
             url {
                 protocol = URLProtocol.HTTPS
                 host = "api.themoviedb.org"
-                encodedPath = "/3/movie/$id"
+                path("/3/movie/$id")
                 parameters.append("api_key", "faa84039c1876a6d0f9856208f4b03ef")
             }
         }.body<MovieDetails>()

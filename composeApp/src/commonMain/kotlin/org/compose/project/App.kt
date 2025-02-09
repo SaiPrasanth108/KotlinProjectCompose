@@ -15,11 +15,17 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import kotlinprojectcompose.composeapp.generated.resources.Res
 import kotlinprojectcompose.composeapp.generated.resources.compose_multiplatform
+import org.compose.project.movies.HomeScreen
 
 @Composable
 @Preview
 fun App() {
     MaterialTheme {
 
+        Column(
+            Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally) {
+            HomeScreen {  }
+        }
     }
 }
