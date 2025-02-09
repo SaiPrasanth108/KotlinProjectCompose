@@ -3,6 +3,7 @@ package org.compose.project.data.network
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
+import io.ktor.client.request.parameter
 import io.ktor.http.URLProtocol
 import io.ktor.http.encodedPath
 import io.ktor.http.path
@@ -25,8 +26,7 @@ class Repository(
                 protocol = URLProtocol.HTTPS
                 host = "api.themoviedb.org"
                 path("/3/movie/$type")
-                parameters.append("api_key", "faa84039c1876a6d0f9856208f4b03ef")
-            }
+                parameter("api_key", "faa84039c1876a6d0f9856208f4b03ef")            }
         }.body<Movies>()
 
         emit(Response.Success(movieDto))
@@ -44,7 +44,7 @@ class Repository(
                 protocol = URLProtocol.HTTPS
                 host = "api.themoviedb.org"
                 path("/3/movie/$id")
-                parameters.append("api_key", "faa84039c1876a6d0f9856208f4b03ef")
+                parameter("api_key", "faa84039c1876a6d0f9856208f4b03ef")
             }
         }.body<MovieDetails>()
 

@@ -76,9 +76,8 @@ fun MovieItem(
             .padding(16.dp)
             .clickable { onMovieClick() }
     ) {
-
         AsyncImage(
-            model = movie.posterPath,
+            model = "https://image.tmdb.org/t/p/w500${movie.posterPath}",
             modifier = Modifier.fillMaxWidth()
                 .height(200.dp)
                 .clip(RoundedCornerShape(8.dp)),

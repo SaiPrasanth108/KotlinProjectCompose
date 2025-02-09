@@ -62,7 +62,7 @@ fun DetailScreen(
             item {
                 detailState.movieDetails?.let { movie ->
                     AsyncImage(
-                        model = movie.posterPath,
+                        model = "https://image.tmdb.org/t/p/w500${movie.posterPath}",
                         modifier = Modifier.fillMaxWidth()
                             .height(400.dp)
                             .clip(RoundedCornerShape(8.dp)),
