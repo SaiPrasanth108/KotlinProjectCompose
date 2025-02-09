@@ -15,7 +15,12 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import kotlinprojectcompose.composeapp.generated.resources.Res
 import kotlinprojectcompose.composeapp.generated.resources.compose_multiplatform
+import org.compose.project.details.DetailScreen
 import org.compose.project.movies.HomeScreen
+
+enum class Screen {
+    Home, Detail
+}
 
 @Composable
 @Preview
@@ -25,7 +30,20 @@ fun App() {
         Column(
             Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally) {
-            HomeScreen {  }
+
+            var currentScreen by remember { mutableStateOf(Screen.Home) }
+            var selectedId by remember { mutableStateOf<Int?>(null) }
+
+            when (currentScreen) {
+                Screen.Home -> HomeScreen {
+                    currentScreen = Screen.Detail
+                    selectedId = it.id
+            }
+                Screen.Detail -> DetailScreen(id = selectedId!!){
+                   currentScreen = Screen.Home
+                    selectedId = null
+                }
+            }
         }
     }
 }
